@@ -1,0 +1,28 @@
+
+CREATE TABLE IF NOT EXISTS user(
+  id INTEGER PRIMARY KEY AUTOINCREMENT, 
+  f_name VARCHAR(30) NOT NULL,
+  l_name VARCHAR(30) NOT NULL,
+  leader BOOLEAN NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS shift(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,  
+  sallary INTEGER,
+  timeIn DATETIME,
+  timeOut DATETIME,
+  WorkHours INTEGER,
+  WorkMins INTEGER,
+  employee_id INTEGER,
+  FOREIGN KEY (employee_id) REFERENCES user (id)
+);
+CREATE TABLE IF NOT EXISTS task(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR(30),
+  description VARCHAR(200),
+  is_done BOOLEAN,
+  c_status VARCHAR(20),
+  employee_id INTEGER,
+  FOREIGN KEY (employee_id) REFERENCES user (id)
+);
+

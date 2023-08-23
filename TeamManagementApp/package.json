@@ -4,13 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "//Build": "npm run build to manually build the file",
+    "//watch": "npm run watch to watch for changes ",
+    "//dev": "npm run dev with watch to automatically rebuild the project ",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "dev": "nodemon dist/index.js",
+    "dev2":"nodemon dist/sqlite.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.5.2",
+    "@types/sqlite3": "^3.1.8",
     "typescipt": "^1.0.0"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.6"
   }
 }

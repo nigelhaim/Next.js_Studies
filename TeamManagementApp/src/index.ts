@@ -1,3 +1,1 @@
-import * as fs from 'fs';
-
-fs;
+console.log("Hello Nigel123");
