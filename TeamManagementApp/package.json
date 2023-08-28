@@ -2,7 +2,7 @@
   "name": "teammanagementapp",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
     "//Build": "npm run build to manually build the file",
     "//watch": "npm run watch to watch for changes ",

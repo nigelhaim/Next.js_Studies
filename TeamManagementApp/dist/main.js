@@ -5,7 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const Landing = () => {
-    return (<h1>All users</h1>);
+    return (react_1.default.createElement("layout", null,
+        react_1.default.createElement("h1", null, "Hello world")));
 };
 exports.default = Landing;
 //# sourceMappingURL=main.js.map
