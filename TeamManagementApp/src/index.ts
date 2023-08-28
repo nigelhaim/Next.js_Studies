@@ -12,5 +12,5 @@ app.listen(
 );
 
 app.get('/', (req,res)=>{
-  res.send("Hello world2");
+  res.send("On this branch try use tsx and import data from the database");
 });

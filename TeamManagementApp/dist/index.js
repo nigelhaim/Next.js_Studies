@@ -6,6 +6,6 @@ const app = require('express')();
 const PORT = 4000;
 app.listen(PORT, () => console.log(`server is running on localhost:${PORT}`));
 app.get('/', (req, res) => {
-    res.send("Hello world2");
+    res.send("On this branch try use tsx and import data from the database");
 });
 //# sourceMappingURL=index.js.map
