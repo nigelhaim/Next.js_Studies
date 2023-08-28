@@ -2,7 +2,7 @@ import fs from 'fs';
 import { Database } from 'sqlite3';
 
 // Open a SQLite database, stored in the file db.sqlite 
-const db = Database('db.sqlite');
+const db = new Database('db.sqlite');
 
 // Fetch a random integer between -99 and +99 (test)
 db.get(
