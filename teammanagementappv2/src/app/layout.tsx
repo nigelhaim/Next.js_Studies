@@ -22,11 +22,11 @@ export default function RootLayout({
       {/*<body className={inter.className}>{children}</body>*/}
       <body>
       <div className={`${styles.header}`}>
-        <h1 class="float-left p-2">Team Management System </h1>
+        <h1>Team Management System </h1>
         <div className={`${styles.headerRight}`}>
-          <h3>Home</h3>
-          <h3>My Team</h3>
-          <h3>About</h3>
+          <h3 className={`${styles.navButtons}`}>Home</h3>
+          <h3 className={`${styles.navButtons}`}>My Team</h3>
+          <h3 className={`${styles.navButtons}`}>About</h3>
           <Image src={logo} className={`${styles.logo}`} alt='icon-image'/>
         </div>
       </div>
