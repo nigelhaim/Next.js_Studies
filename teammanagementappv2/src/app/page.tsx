@@ -1,7 +1,10 @@
-import Image from 'next/image'
-
+import Image from 'next/image';
+import React from 'react';
 export default function Home() {
   return (
-  <h1>Hello world</h1>
+  <div>
+    <h1>Hello world</h1>
+    <h2>This is header 2</h2>
+  </div>
   )
 }

@@ -1,7 +1,10 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import Image from "next/image";
 
+import "./globals.css";
+import styles from "./layout.module.css"
+import logo from "../../assets/Updated 01_13_2022.png";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -17,7 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/*<body className={inter.className}>{children}</body>*/}
-      <body>{children}</body>
+      <body>
+        <h1>Team Management System </h1>
+        <Image src={logo} className={`${styles.logo}`} alt='icon-image'/>
+        {children}
+      </body>
+
     </html>
   )
 }
