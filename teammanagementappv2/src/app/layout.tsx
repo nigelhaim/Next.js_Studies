@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Image from "next/image";
-
+import { useEffect } from "react";
 import "./globals.css";
 import styles from "./layout.module.css"
 import logo from "../../assets/Updated 01_13_2022.png";
@@ -21,8 +21,15 @@ export default function RootLayout({
     <html lang="en">
       {/*<body className={inter.className}>{children}</body>*/}
       <body>
-        <h1>Team Management System </h1>
-        <Image src={logo} className={`${styles.logo}`} alt='icon-image'/>
+      <div className={`${styles.header}`}>
+        <h1 class="float-left p-2">Team Management System </h1>
+        <div className={`${styles.headerRight}`}>
+          <h3>Home</h3>
+          <h3>My Team</h3>
+          <h3>About</h3>
+          <Image src={logo} className={`${styles.logo}`} alt='icon-image'/>
+        </div>
+      </div>
         {children}
       </body>
 
