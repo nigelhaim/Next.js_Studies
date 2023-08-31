@@ -1,7 +1,19 @@
 import Image from 'next/image';
 import React from 'react';
-import { Database, OPEN_READWRITE, getValues } from 'sqlite3';
+import { Database, OPEN_READWRITE } from 'sqlite3';
 import fs from 'fs';
+import { user } from './models/user';
+function Home(res) {
+  let result: user[] = res;
+  console.log("printing", result);
+  return (
+  <div>
+    <h1>Hello world</h1>
+    <h2>This is header 2</h2>
+  </div>
+  )
+}
+function getUsers(){
 
   const db = new Database('./src/app/database.db', OPEN_READWRITE, (err) => {
         if (err) return console.log(err.message)
@@ -9,24 +21,48 @@ import fs from 'fs';
           console.log("Connected Database");
         }
       });
-  let getQuery = 'SELECT * FROM user';
-const res = [];
-db.all(getQuery, [], (err, rows) => {
+  let getQuery = 'SELECT * FROM user;';
+/*const res: user[] = [];
+  db.all(getQuery, [], (err, rows) => {
        if(err) return console.error(err.message);
        rows.forEach(row => {
-              console.log("pushing");
-             res[row.id-1] = row;
-           })
-});
-function Home() {
-  console.log("printing", res);
-  return (
-  <div>
-    <h1>Hello world</h1>
-    <h2>This is header 2</h2>
-    <h3>{ res }</h3> 
-  </div>
-  )
+          let leader = false; 
+          if(row.leader.toString() == "1"){
+            leader = true;
+          }
+            let u = new user(Number(row.id), row.f_name.toString(), row.l_name.toString(), leader, row.username.toString(), row.password.toString());  
+            res.push(u);
+          //console.log("Pushing", u);
+          //res.push(u(row.id, row.f_name, row.l_name, row.leader, row.username, row.password));
+       })
+  console.log("Returning ", res)
+  });*/
+  const res = () => {
+    return new Promise((resolve, reject) => {
+          let result : user []  = []; 
+          try{
+
+          db.each(`select * from user;`, (err,row) => {
+            
+                if(err){ console.log(err)}
+                let leader = false;
+                if(row.leader.toString() == "1"){
+                  leader = true;
+                }
+                let u = new user(Number(row.id), row.f_name.toString(), row.l_name.toString(), leader, row.username.toString(), row.password.toString());  
+                result.push(u)
+                console.log("pushing", u)
+              }, () => {
+                resolve(result)
+              })
+          }
+          catch(error){
+            console.log(error);
+          }
+        })
+    console.log(result)
+  }
+return res().then((result) => Home(result))
 }
  
-export default Home
+export default getUsers
