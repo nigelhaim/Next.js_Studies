@@ -10,6 +10,31 @@ function Home(res) {
   <div>
     <h1>Hello world</h1>
     <h2>This is header 2</h2>
+    <h3>Printing name from database { res[1].f_name }</h3>
+    <div>
+      <table>
+      <tr>
+       <th>Id</th>
+       <th>First name</th>
+       <th>Last name</th>
+        <th>Role</th>
+       <th>Username</th>
+        <th>Password</th>
+      </tr>
+       {
+         result.map((res) => (
+           <tr>
+             <td>{res.id}</td>
+             <td>{res.f_name}</td>
+             <td>{res.l_name}</td>
+             <td>{res.role}</td>
+             <td>{res.username}</td>
+             <td>{res.password}</td>
+           </tr>
+         ))
+       }
+      </table>
+    </div>
   </div>
   )
 }
