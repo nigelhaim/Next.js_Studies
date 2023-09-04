@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
+import { useEffect } from 'react';
 import { Database, OPEN_READWRITE } from 'sqlite3';
 import fs from 'fs';
 import { user } from './models/user';
+import dynamic from 'next/dynamic';
+
 function Home(res) {
   let result: user[] = res;
   console.log("printing", result);
@@ -14,16 +17,16 @@ function Home(res) {
     <div>
       <table>
       <tr>
-       <th>Id</th>
-       <th>First name</th>
-       <th>Last name</th>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
         <th>Role</th>
-       <th>Username</th>
+        <th>Username</th>
         <th>Password</th>
       </tr>
        {
          result.map((res) => (
-           <tr>
+           <tr key={res.id}>
              <td>{res.id}</td>
              <td>{res.f_name}</td>
              <td>{res.l_name}</td>
@@ -90,4 +93,4 @@ function getUsers(){
 return res().then((result) => Home(result))
 }
  
-export default getUsers
+export default dynamic (() => Promise.resolve(getUsers), {ssr :false})
