@@ -1,42 +1,42 @@
 
 export class task{
-  private task_id : number,
-  private task_title : string, 
-  private task_description: string, 
-  private task_done : boolean, 
-  private task_status: string,
-  private task_employee: number,
+  private t_id : number;
+  private t_title : string; 
+  private t_description: string; 
+  private t_done : boolean;
+  private t_status: string;
+  private t_employee: number;
 
   constructor(id:number, task_title:string, task_description:string, task_done: boolean, task_status:string, task_employee:number){
-    this.task_id = id;
-    this.task_title = task_title;
-    this.task_description = task_description;
-    this.task_done = task_done;
-    this.task_status = task_status;
-    this.task_employee = task_employee;
+    this.t_id = id;
+    this.t_title = task_title;
+    this.t_description = task_description;
+    this.t_done = task_done;
+    this.t_status = task_status;
+    this.t_employee = task_employee;
   }
   
   public get task_id() : number{
-    return this.task_id;
+    return this.t_id;
   }
 
-  public get task_title() : number{
-    return this.task_title;
+  public get task_title() : string{
+    return this.t_title;
   }
 
   public get task_description():string{
-    return this.task_description;
+    return this.t_description;
   }
 
   public get task_done() : boolean {
-    return this.task_done; 
+    return this.t_done; 
   }
 
   public get task_status() : string {
-    return this.task_status;
+    return this.t_status;
   }
 
   public get task_employee() : number {
-    return 
+    return this.t_employee;
   }
 }

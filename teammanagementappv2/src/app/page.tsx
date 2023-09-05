@@ -6,7 +6,7 @@ import fs from 'fs';
 import { user } from './models/user';
 import dynamic from 'next/dynamic';
 
-function Home(res) {
+function Home(res:any) {
   let result: user[] = res;
   console.log("printing", result);
   return (
@@ -70,7 +70,7 @@ function getUsers(){
           let result : user []  = []; 
           try{
 
-          db.each(`select * from user;`, (err,row) => {
+          db.each(`select * from user;`, (err:any,row:any) => {
             
                 if(err){ console.log(err)}
                 let leader = false;
@@ -88,7 +88,6 @@ function getUsers(){
             console.log(error);
           }
         })
-    console.log(result)
   }
 return res().then((result) => Home(result))
 }
