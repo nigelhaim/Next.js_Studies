@@ -1,10 +1,10 @@
-
 .logo{
 height:50px;
   width:auto;
   float:right;
 }
 .header{
+  margin: 0px;
   display:flex;
   height:20%;
   background-color:;
