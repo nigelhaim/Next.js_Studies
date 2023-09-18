@@ -6,8 +6,10 @@ import { useEffect } from "react";
 import "./globals.css";
 import styles from "./layout.module.css"
 import logo from "../../assets/Updated 01_13_2022.png";
+import { options } from "./api/auth/[...nextauth]/options";
+import { getServerSession } from 'next-auth/next';
+import { redirect } from 'next/navigation';
 const inter = Inter({ subsets: ['latin'] })
-
 
 export const metadata: Metadata = {
   title: 'TeamManagementApp',
@@ -15,11 +17,25 @@ export const metadata: Metadata = {
 }
 
 
+function sesh(){
+  const session = getServerSession(options);
+  let ret; 
+  if (!session){
+  //redirect('/api/auth/signin?callbackUrl=/server');
+    ret = <h3 className={`${styles.navButtons}`}>Log in</h3>
+    return ret
+  }
+  ret = <Link href="/api/auth/signout"><h3 className={`${styles.navButtons}`}>Log Out </h3></Link>
+  return ret;
+}
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}) 
+  {
+  let session = sesh();
   return (
     <html lang="en">
       {/*<body className={inter.className}>{children}</body>*/}
@@ -30,6 +46,7 @@ export default function RootLayout({
           <Link href="/"><h3 className={`${styles.navButtons}`}>Home</h3></Link>
           <Link href="/MyTeam"><h3 className={`${styles.navButtons}`}>My Team</h3></Link>
           <h3 className={`${styles.navButtons}`}>About</h3>
+          { session }
           <Image src={logo} className={`${styles.logo}`} alt='icon-image'/>
         </div>
       </div>
