@@ -1,19 +1,33 @@
-
 import Image from 'next/image';
 import React from 'react';
-import { useEffect } from 'react';
 import { Database, OPEN_READWRITE } from 'sqlite3';
 import fs from 'fs';
 import { user } from '../models/user';
 import dynamic from 'next/dynamic';
-
 function Home(res:any) {
   let result: user[] = res;
   console.log("printing", result);
   return (
-  <div>
-    <h1>My Team</h1>
-    <div>
+      <div>
+        <h1>My Team</h1>
+          <button id="showForm">Add a member</button>
+          <div className="add_Employee">
+            <form className="InputForm">
+              <input name="FirstName" className="infoInput" />
+              <br />
+              <br />
+              <input name="LastName" className="infoInput" />
+              <br />
+              <br />
+              <select name="Role" className="infoSelect">
+                <option>Leader</option>
+                <option>Employee</option>
+              </select>
+              <br />
+              <br />
+              <input type="submit" value="Add Employee" />
+            </form> 
+          </div>
       <table>
       <tr>
         <th>Id</th>
@@ -36,8 +50,8 @@ function Home(res:any) {
          ))
        }
       </table>
+    <script>console.log("Testgin");</script>
     </div>
-  </div>
   )
 }
 function checkLeader(res){
@@ -59,21 +73,6 @@ function getUsers(){
         }
       });
   let getQuery = 'SELECT * FROM user;';
-/*const res: user[] = [];
-  db.all(getQuery, [], (err, rows) => {
-       if(err) return console.error(err.message);
-       rows.forEach(row => {
-          let leader = false; 
-          if(row.leader.toString() == "1"){
-            leader = true;
-          }
-            let u = new user(Number(row.id), row.f_name.toString(), row.l_name.toString(), leader, row.username.toString(), row.password.toString());  
-            res.push(u);
-          //console.log("Pushing", u);
-          //res.push(u(row.id, row.f_name, row.l_name, row.leader, row.username, row.password));
-       })
-  console.log("Returning ", res)
-  });*/
   const res = () => {
     return new Promise((resolve, reject) => {
           let result : user []  = []; 
@@ -98,6 +97,21 @@ function getUsers(){
           }
         })
   }
+/*const res: user[] = [];
+  db.all(getQuery, [], (err, rows) => {
+       if(err) return console.error(err.message);
+       rows.forEach(row => {
+          let leader = false; 
+          if(row.leader.toString() == "1"){
+            leader = true;
+          }
+            let u = new user(Number(row.id), row.f_name.toString(), row.l_name.toString(), leader, row.username.toString(), row.password.toString());  
+            res.push(u);
+          //console.log("Pushing", u);
+          //res.push(u(row.id, row.f_name, row.l_name, row.leader, row.username, row.password));
+       })
+  console.log("Returning ", res)
+  });*/
 return res().then((result) => Home(result))
 }
  

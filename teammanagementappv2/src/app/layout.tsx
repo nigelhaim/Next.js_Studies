@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Inter } from 'next/font/google';
 import Image from "next/image";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./globals.css";
 import styles from "./layout.module.css"
 import logo from "../../assets/Updated 01_13_2022.png";
@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   title: 'TeamManagementApp',
   description: 'This is a team management app made by Nigel Sebastian on Next.js',
 }
-
 
 function sesh(){
   const session = getServerSession(options);
@@ -51,8 +50,9 @@ export default function RootLayout({
         </div>
       </div>
         {children}
+        <div>
+        </div>
       </body>
-
     </html>
   )
 }
